@@ -5,7 +5,7 @@ import Gallery from './components/Gallery';
 import Team from './components/Team';
 import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
-import Portfolio from './components/Portfolio'; // Import Portfolio, assuming Portfolio.jsx is in components
+import Portfolio from './components/Portfolio';
 import Footer from './components/Footer';
 
 function App() {

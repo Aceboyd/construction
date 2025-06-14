@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 
+import rob from '../assets/image/rob.jpg';
+
 const Testimonials = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
@@ -10,7 +12,7 @@ const Testimonials = () => {
       name: "Robert Chen",
       role: "Development Director",
       company: "Metro Development Group",
-      image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg",
+      image: rob,
       rating: 5,
       testimonial: "Randy Coleman Engineering delivered exceptional structural engineering for our 45-story tower. Their 3D modeling and analysis capabilities are unmatched.",
       project: "Metro Tower - 45 floors",

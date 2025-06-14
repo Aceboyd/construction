@@ -31,7 +31,7 @@ const Hero = () => {
       <nav className="relative z-50 flex items-center justify-between p-6 bg-white/10 backdrop-blur-md">
         <div className="flex items-center space-x-3">
           <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-emerald-500 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">RC</span>
+            <span className="text-white font-bold text-sm">RCES</span>
           </div>
           <div className="flex flex-col">
             <span className="text-white font-semibold text-lg">RANDY COLEMAN</span>
