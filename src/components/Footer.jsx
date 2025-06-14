@@ -82,11 +82,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-coral-400" />
-                <span className="text-gray-300 text-sm">info@randycoleman.com</span>
+                <span className="text-gray-300 text-sm">info@randycolemanengr.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-coral-400" />
-                <span className="text-gray-300 text-sm">456 Engineering Plaza, Coleman City</span>
+                <span className="text-gray-300 text-sm">39 Taylor St San Francisco, CA 94102</span>
               </div>
             </div>
           </div>

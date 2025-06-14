@@ -13,14 +13,16 @@ function App() {
 
   return (
     <div className="bg-white">
-      <Hero />
-      <Services />
-      <Gallery />
-      <Team />
-      <Testimonials contactRef={contactRef} />
-      <Portfolio />
-      <ContactForm ref={contactRef} />
-      <Footer />
+      <main>
+        <Hero />
+        <Services />
+        <Gallery />
+        <Team />
+        <Testimonials contactRef={contactRef} />
+        <Portfolio />
+        <ContactForm ref={contactRef} />
+        <Footer />
+      </main>
     </div>
   );
 }

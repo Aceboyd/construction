@@ -50,7 +50,7 @@ const Hero = () => {
               {section}
             </button>
           ))}
-          <span className="text-white/80 ml-6 hidden lg:block">info@randycoleman.com</span>
+          <span className="text-white/80 ml-6 hidden lg:block">info@randycolemanengr.com</span>
         </div>
 
         {/* Mobile Icons */}

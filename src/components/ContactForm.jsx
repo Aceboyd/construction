@@ -194,7 +194,7 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm mb-1">Email</h4>
-                    <p className="text-white/80 text-sm">info@randycoleman.com</p>
+                    <p className="text-white/80 text-sm">info@randycolemanengr.com</p>
                     <p className="text-white/80 text-sm">engineering@randycoleman.com</p>
                   </div>
                 </div>
@@ -205,8 +205,8 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm mb-1">Address</h4>
-                    <p className="text-white/80 text-sm">456 Engineering Plaza</p>
-                    <p className="text-white/80 text-sm">Coleman City, CC 54321</p>
+                    <p className="text-white/80 text-sm">39 Taylor St</p>
+                    <p className="text-white/80 text-sm">San Francisco, CA 94102</p>
                   </div>
                 </div>
 
