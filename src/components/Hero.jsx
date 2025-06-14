@@ -28,7 +28,7 @@ const Hero = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="relative z-50 flex items-center justify-between p-6 bg-white/10 backdrop-blur-md">
+      <nav className="top-0 left-0 w-full z-50 flex items-center justify-between p-6 bg-white/10 backdrop-blur-md">
         <div className="flex items-center space-x-3">
           <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-emerald-500 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-sm">RCES</span>
@@ -78,8 +78,8 @@ const Hero = () => {
         </div>
       )}
 
-      {/* Hero Content */}
-      <div className="relative z-20 flex items-center justify-center min-h-screen px-6 text-center">
+      {/* Hero Content with padding to account for fixed nav */}
+      <div className="relative z-20 flex items-center justify-center min-h-screen px-6 text-center pt-20"> {/* Added pt-20 to offset fixed nav */}
         <div className="max-w-4xl">
           <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
             Engineering<br />

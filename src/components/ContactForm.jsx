@@ -1,8 +1,99 @@
+// import React, { useState } from 'react';
+// import emailjs from '@emailjs/browser';
+// import { Send, Phone, Mail, MapPin, Clock, CheckCircle, User, Building } from 'lucide-react';
+
+// const ContactForm = () => {
+//   const [formData, setFormData] = useState({
+//     name: '',
+//     email: '',
+//     phone: '',
+//     company: '',
+//     projectType: '',
+//     budget: '',
+//     timeline: '',
+//     message: ''
+//   });
+//   const [isSubmitting, setIsSubmitting] = useState(false);
+//   const [isSubmitted, setIsSubmitted] = useState(false);
+//   const [errorMessage, setErrorMessage] = useState(null);
+
+//   const handleChange = (e) => {
+//     setFormData({
+//       ...formData,
+//       [e.target.name]: e.target.value
+//     });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setIsSubmitting(true);
+//     setErrorMessage(null);
+
+//     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+//     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+//     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+//     console.log('Service ID:', serviceId);
+//     console.log('Template ID:', templateId);
+//     console.log('Public Key:', publicKey);
+//     console.log('All env variables:', import.meta.env);
+
+//     if (!serviceId || !templateId || !publicKey) {
+//       setIsSubmitting(false);
+//       setErrorMessage('Configuration error. Please contact support.');
+//       setTimeout(() => setErrorMessage(null), 5000);
+//       return;
+//     }
+
+//     try {
+//       const result = await emailjs.sendForm(serviceId, templateId, e.target, publicKey);
+//       console.log('Email sent:', result.text);
+//       setIsSubmitting(false);
+//       setIsSubmitted(true);
+      
+//       setTimeout(() => {
+//         setIsSubmitted(false);
+//         setFormData({
+//           name: '',
+//           email: '',
+//           phone: '',
+//           company: '',
+//           projectType: '',
+//           budget: '',
+//           timeline: '',
+//           message: ''
+//         });
+//       }, 3000);
+//     } catch (error) {
+//       console.error('EmailJS error:', error);
+//       setIsSubmitting(false);
+//       setErrorMessage('Failed to send message. Please try again.');
+//       setTimeout(() => setErrorMessage(null), 5000);
+//     }
+//   };
+
+//   return (
+    
+//   );
+// };
+
+// export default ContactForm;
+
+
+
+
+
+
+
+
+
 import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
-import { Send, Phone, Mail, MapPin, Clock, CheckCircle, User, Building } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, User, Building, CheckCircle, Send } from 'lucide-react';
 
 const ContactForm = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -13,46 +104,33 @@ const ContactForm = () => {
     timeline: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setErrorMessage(null);
-
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    console.log('Service ID:', serviceId);
-    console.log('Template ID:', templateId);
-    console.log('Public Key:', publicKey);
-    console.log('All env variables:', import.meta.env);
-
-    if (!serviceId || !templateId || !publicKey) {
-      setIsSubmitting(false);
-      setErrorMessage('Configuration error. Please contact support.');
-      setTimeout(() => setErrorMessage(null), 5000);
-      return;
-    }
+    setErrorMessage('');
 
     try {
-      const result = await emailjs.sendForm(serviceId, templateId, e.target, publicKey);
-      console.log('Email sent:', result.text);
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      
-      setTimeout(() => {
-        setIsSubmitted(false);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          access_key: '3e4e6208-fd63-48c2-b4ca-207fff6dd226',
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
         setFormData({
           name: '',
           email: '',
@@ -63,12 +141,16 @@ const ContactForm = () => {
           timeline: '',
           message: ''
         });
-      }, 3000);
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      } else {
+        setErrorMessage('Failed to send message. Please try again.');
+      }
     } catch (error) {
-      console.error('EmailJS error:', error);
+      setErrorMessage('An error occurred. Please try again later.');
+    } finally {
       setIsSubmitting(false);
-      setErrorMessage('Failed to send message. Please try again.');
-      setTimeout(() => setErrorMessage(null), 5000);
     }
   };
 
@@ -174,6 +256,11 @@ const ContactForm = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  <input
+                    type="hidden"
+                    name="access_key"
+                    value="3e4e6208-fd63-48c2-b4ca-207fff6dd226"
+                  />
                   {errorMessage && (
                     <div className="text-center text-red-500 text-sm">{errorMessage}</div>
                   )}
