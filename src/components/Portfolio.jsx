@@ -54,7 +54,7 @@ const Portfolio = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-16">
+      <section className="bg-gradient-to-r from-blue-900 to-blue-900 text-white py-16">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Iconic Projects</h1>
           <p className="text-lg md:text-xl max-w-xl mx-auto">
